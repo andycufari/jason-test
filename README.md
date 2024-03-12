@@ -1,36 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Reproduction for Next.js `.d.ts` Import Issue
 
-## Getting Started
+This repository is a minimal reproduction of an issue encountered when importing the `@cm64/jasonjs` package into a Next.js project.
 
-First, run the development server:
+## Issue Description
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The project throws a "Module parse failed: Unexpected token" error when trying to import components from the `@cm64/jasonjs` package, pointing to `.d.ts` files.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Steps to Reproduce
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone this repository.
+2. Install dependencies with `npm install`.
+3. Run the development server with `npm run dev`.
+4. Navigate to `http://localhost:3000` to see the issue in action.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Expected Behavior
 
-## Learn More
+The components from `@cm64/jasonjs` should be imported without any parsing errors.
 
-To learn more about Next.js, take a look at the following resources:
+## Actual Behavior
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Webpack fails to parse `.d.ts` files from the package, resulting in a build error.
